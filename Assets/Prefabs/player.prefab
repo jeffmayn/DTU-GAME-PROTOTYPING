@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 5454924268885737337}
   - component: {fileID: 5454924268885737342}
   - component: {fileID: 5454924268885737336}
-  - component: {fileID: 5454924268885737339}
-  - component: {fileID: 5454924268885737338}
+  - component: {fileID: 3655736621137743314}
+  - component: {fileID: 303912155}
+  - component: {fileID: 303912159}
   m_Layer: 8
   m_Name: player
   m_TagString: Untagged
@@ -71,9 +72,10 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1968952309
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 3fc3bf8e3b6a05246a87bf3cf358be3d, type: 3}
+  m_Sprite: {fileID: 3244912566212535839, guid: 7ce01516c18a6f84f9af97a53842dd90,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -98,9 +100,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 5
   minHealth: 0
-  speed: 10
-  jumpSpeed: 20
---- !u!54 &5454924268885737339
+  speed: 5
+  jumpSpeed: 7
+--- !u!54 &3655736621137743314
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -116,7 +118,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 1
---- !u!136 &5454924268885737338
+--- !u!136 &303912155
 CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -126,7 +128,26 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.12206225
-  m_Height: 2.3183236
+  m_Radius: 0.14271802
+  m_Height: 0.98
   m_Direction: 1
-  m_Center: {x: 0.007813975, y: -0.31794456, z: 0.030358175}
+  m_Center: {x: -0.046348333, y: 1.0451513e-11, z: 0.001347065}
+--- !u!95 &303912159
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5454924268885737343}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6f82a675daa669945b978ec95310137f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
