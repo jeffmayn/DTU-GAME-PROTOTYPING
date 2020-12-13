@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
     [SerializeField] int lives = 2;
+    [SerializeField] Image image;
 
 
     // singleton: if already one session exists, any time a new session is instantiated it destroyds itself
@@ -23,11 +25,28 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    // for UI
+    public void DecrementHP(float dmg)
+    {
+        float width = image.GetComponent<RectTransform>().rect.width;
+        float hp = FindObjectOfType<PlayerController>().maxHealth;
+        float maxHP = 100f;
+        float newWidth = (hp / maxHP) * width;
+
+
+
+
+        image.rectTransform.sizeDelta = new Vector2(newWidth, 100);
+
+        print("HP: " + hp);
+    }
+
     public void playerDeath()
     {
         if(lives > 1)
         {
             DecrementLife();
+           
 
         } else
         {

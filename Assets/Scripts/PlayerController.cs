@@ -83,6 +83,7 @@ public class PlayerController : MonoBehaviour
     public void takeDamage(float dmg)
     {
         maxHealth = Mathf.Max(maxHealth - dmg, 0);
+        FindObjectOfType<GameManager>().DecrementHP(dmg);
         if (maxHealth <= 0)
         {
             Die();
