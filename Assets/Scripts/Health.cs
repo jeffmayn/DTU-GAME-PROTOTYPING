@@ -9,6 +9,11 @@ public class Health : MonoBehaviour
     public void TakeDamage(float dmg)
     {
         health = Mathf.Max(health - dmg, 0);
+        if(health <= 0)
+        {
+            GetComponent<EnemyController>().Die();
+            //Destroy(gameObject);
+        }
         print(health);
     }
 

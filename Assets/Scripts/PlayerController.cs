@@ -9,14 +9,15 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float swordDamage = 25f;
     [SerializeField] Transform target;
 
-    public int maxHealth = 5;
-    public int minHealth = 0;
+    public float maxHealth = 5.0f;
+    public float minHealth = 0.0f;
     public int speed = 2;
     public int jumpSpeed = 5;
     [SerializeField] Vector2 dieJump = new Vector2(25f, 25f);
 
     bool isAlive = true;
     bool canAttack = false;
+
 
     Rigidbody rigidbdy;
     Animator animator;
@@ -58,6 +59,11 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public bool isPlayerAlive()
+    {
+        return isAlive;
+    }
+
     private void Update()
     {
         if(!isAlive)
@@ -65,16 +71,29 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
+        
+
         Run();
         FlipSprite();
         Jump();
-        Die();
         Raycast();
         Attack();
     }
 
+    public void takeDamage(float dmg)
+    {
+        maxHealth = Mathf.Max(maxHealth - dmg, 0);
+        if (maxHealth <= 0)
+        {
+            Die();
+        }
+        print(maxHealth);
+    }
+
     private void Attack()
     {
+
+      
         if (canAttack && Input.GetKeyDown(KeyCode.F) && target.tag == "Enemy")
         {
             print("Attacking: " + target);
@@ -107,12 +126,9 @@ public class PlayerController : MonoBehaviour
 
     private void Die()
     {
-        if (Input.GetKeyDown(KeyCode.O))
-        {
-            isAlive = false;
-            animator.SetTrigger("Dying");
-            GetComponent<Rigidbody>().velocity = dieJump;
-        }
+        isAlive = false;
+        animator.SetTrigger("Dying");
+        GetComponent<Rigidbody>().velocity = dieJump;
     }
 
     private void FlipSprite()

@@ -9,8 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5454924268885737337}
-  - component: {fileID: 5454924268885737342}
   - component: {fileID: 5454924268885737336}
+  - component: {fileID: 3436270914443757594}
+  - component: {fileID: 5454924268885737342}
   - component: {fileID: 3655736621137743314}
   - component: {fileID: 303912155}
   - component: {fileID: 303912159}
@@ -35,6 +36,38 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 45, y: 0, z: 0}
+--- !u!114 &5454924268885737336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5454924268885737343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9bb3c7b9f5191543b05331ab2cb15f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  swordDamage: 100
+  target: {fileID: 0}
+  maxHealth: 100
+  minHealth: 0
+  speed: 5
+  jumpSpeed: 7
+  dieJump: {x: 1, y: 7}
+--- !u!114 &3436270914443757594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5454924268885737343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3b5db2c3f72439439aade9b7d2649a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
 --- !u!212 &5454924268885737342
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -72,7 +105,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1968952309
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 3244912566212535839, guid: 7ce01516c18a6f84f9af97a53842dd90,
     type: 3}
@@ -86,23 +119,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5454924268885737336
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5454924268885737343}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9bb3c7b9f5191543b05331ab2cb15f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 5
-  minHealth: 0
-  speed: 5
-  jumpSpeed: 7
-  dieJump: {x: 1, y: 7}
 --- !u!54 &3655736621137743314
 Rigidbody:
   m_ObjectHideFlags: 0

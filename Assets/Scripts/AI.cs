@@ -1,13 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class AI : MonoBehaviour
 {
-    [SerializeField] float chaseDistance = 5f;
+    [SerializeField] float fieldOfView = 5f;
+    [SerializeField] float stoppingRange = 1.2f;
+    [SerializeField] float attackRestingTime = 2f;
+
     GameObject player;
     EnemyController enemy;
-    Transform target;
+    float lastAttack = 0f;
+    bool canAttack = false;
 
     private void Start()
     {
@@ -16,11 +21,37 @@ public class AI : MonoBehaviour
 
     private void Update()
     {
+        lastAttack += Time.deltaTime;
 
-        bool inRange = Vector3.Distance(transform.position, player.transform.position) < chaseDistance;
-        if(player != null && inRange)
+        bool inFieldOfView = Vector3.Distance(transform.position, player.transform.position) < fieldOfView;
+        bool inStoppingRange = Vector3.Distance(transform.position, player.transform.position) < stoppingRange;
+        bool attackingRange = inFieldOfView && Vector3.Distance(transform.position, player.transform.position) <= 2;
+
+        // moves enemy towards player when he gets in their field of view
+        // and stops the enemy when he is in front of the player (so the sprites dont overlap)
+        if(inFieldOfView && !inStoppingRange)
         {
             GetComponent<EnemyController>().MoveEnemy(player.transform.position);
+
+        } else
+        {
+            GetComponent<EnemyController>().Stop();
+        }
+
+        // Attack player if hes alive
+        bool playerisAlive = player.GetComponent<PlayerController>().isPlayerAlive();
+        if(transform.gameObject.tag != "Dead")
+        {
+            canAttack = true;
+        } else
+        {
+            canAttack = false;
+        }
+        
+        if (playerisAlive && lastAttack > attackRestingTime && inStoppingRange)
+        {
+            GetComponent<EnemyController>().Attack(player, canAttack);
+            lastAttack = 0;
         }
 
     }
@@ -28,6 +59,9 @@ public class AI : MonoBehaviour
     private bool Distance()
     {
         float distanceToPlayer = Vector3.Distance(player.transform.position, transform.position);
-        return distanceToPlayer < chaseDistance;
+        return distanceToPlayer < fieldOfView;
     }
+
+
+
 }
