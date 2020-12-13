@@ -8,6 +8,7 @@ TagManager:
   - Ground
   - Enemy
   - Dead
+  - EnemyTaunt
   layers:
   - Default
   - TransparentFX
@@ -24,7 +25,7 @@ TagManager:
   - Enemy
   - BackWall
   - Hazards
-  - 
+  - Triggers
   - 
   - 
   - 
@@ -56,4 +57,7 @@ TagManager:
     locked: 0
   - name: frontwall
     uniqueID: 2892171681
+    locked: 0
+  - name: Triggers
+    uniqueID: 2933985925
     locked: 0

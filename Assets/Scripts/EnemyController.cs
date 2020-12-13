@@ -7,6 +7,7 @@ public class EnemyController : MonoBehaviour
 {
     [SerializeField] Transform target;
     [SerializeField] float speed = 1f;
+    [SerializeField] float swordDamage = 5f;
 
     Rigidbody rigidbdy;
     NavMeshAgent nmAgent;
@@ -22,9 +23,33 @@ public class EnemyController : MonoBehaviour
         nmAgent = GetComponent<NavMeshAgent>();        
     }
 
-    public void Stop()
+    public void Stop(bool fieldOfView, bool playerIsAlive)
     {
-        nmAgent.isStopped = true;
+ 
+        if (!fieldOfView)
+        {
+            findTaunt();
+        } else
+        {
+            nmAgent.isStopped = true;
+        }
+            
+    }
+
+    public void findTaunt()
+    {
+
+        GameObject tauntPos = GameObject.FindWithTag("EnemyTaunt");
+        bool nearByTaunt = Vector3.Distance(transform.position, tauntPos.transform.position) < 1.0f;
+
+        if (nearByTaunt && isAlive)
+        {
+            nmAgent.isStopped = true;
+        }
+        else
+        {
+            nmAgent.destination = tauntPos.transform.position;
+        }
     }
 
     // Update is called once per frame
@@ -37,10 +62,10 @@ public class EnemyController : MonoBehaviour
             Run();
         } else
         {
-            Stop();
+            Stop(false, false);
         }
-        
     }
+
 
     public bool isEnemyAlive()
     {
@@ -80,15 +105,18 @@ public class EnemyController : MonoBehaviour
 
             //animator.SetTrigger("Attack");
             PlayerController health = target.GetComponent<PlayerController>();
-            health.takeDamage(10f);
+            health.takeDamage(swordDamage);
         }
     }
 
     public void MoveEnemy(Vector3 dest)
     {
-        
-        nmAgent.isStopped = false;
-        nmAgent.destination = dest;
+
+        if (isAlive)
+        {
+            nmAgent.isStopped = false;
+            nmAgent.destination = dest;
+        }
 
         //GetComponent<NavMeshAgent>().destination = target.position;
     }

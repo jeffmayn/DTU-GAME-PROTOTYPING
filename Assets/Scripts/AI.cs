@@ -22,6 +22,8 @@ public class AI : MonoBehaviour
     private void Update()
     {
         lastAttack += Time.deltaTime;
+        bool playerisAlive = player.GetComponent<PlayerController>().isPlayerAlive();
+
 
         bool inFieldOfView = Vector3.Distance(transform.position, player.transform.position) < fieldOfView;
         bool inStoppingRange = Vector3.Distance(transform.position, player.transform.position) < stoppingRange;
@@ -35,11 +37,12 @@ public class AI : MonoBehaviour
 
         } else
         {
-            GetComponent<EnemyController>().Stop();
+           
+            GetComponent<EnemyController>().Stop(inFieldOfView, playerisAlive);
         }
 
         // Attack player if hes alive
-        bool playerisAlive = player.GetComponent<PlayerController>().isPlayerAlive();
+
         if(transform.gameObject.tag != "Dead")
         {
             canAttack = true;
@@ -48,7 +51,7 @@ public class AI : MonoBehaviour
             canAttack = false;
         }
         
-        if (playerisAlive && lastAttack > attackRestingTime && inStoppingRange)
+        if (playerisAlive && lastAttack > attackRestingTime && inStoppingRange && inFieldOfView)
         {
             GetComponent<EnemyController>().Attack(player, canAttack);
             lastAttack = 0;
