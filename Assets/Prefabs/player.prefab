@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 303912159}
   m_Layer: 8
   m_Name: player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -102,6 +102,7 @@ MonoBehaviour:
   minHealth: 0
   speed: 5
   jumpSpeed: 7
+  dieJump: {x: 1, y: 7}
 --- !u!54 &3655736621137743314
 Rigidbody:
   m_ObjectHideFlags: 0
