@@ -28,14 +28,16 @@ public class EnemyController : MonoBehaviour
  
         if (!fieldOfView)
         {
-            findTaunt();
+
+          //  GetComponent<EnemeTaunt>().findTaunt(playerIsAlive, nmAgent);
+          findTaunt();
         } else
         {
             nmAgent.isStopped = true;
         }
             
     }
-
+    
     public void findTaunt()
     {
 
@@ -51,6 +53,7 @@ public class EnemyController : MonoBehaviour
             nmAgent.destination = tauntPos.transform.position;
         }
     }
+    
 
     // Update is called once per frame
     private void Update()

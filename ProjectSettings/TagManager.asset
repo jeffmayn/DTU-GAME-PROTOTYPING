@@ -9,6 +9,7 @@ TagManager:
   - Enemy
   - Dead
   - EnemyTaunt
+  - Lava
   layers:
   - Default
   - TransparentFX
@@ -26,7 +27,7 @@ TagManager:
   - BackWall
   - Hazards
   - Triggers
-  - 
+  - EnemyBlocker
   - 
   - 
   - 

@@ -124,11 +124,12 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void Die()
+    public void Die()
     {
         isAlive = false;
         animator.SetTrigger("Dying");
         GetComponent<Rigidbody>().velocity = dieJump;
+        FindObjectOfType<GameManager>().playerDeath();
     }
 
     private void FlipSprite()
