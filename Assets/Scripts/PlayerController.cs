@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
     public float minHealth = 0.0f;
     public int speed = 2;
     public int jumpSpeed = 5;
-    [SerializeField] Vector2 dieJump = new Vector2(25f, 25f);
+    //[SerializeField] Vector2 dieJump = new Vector2(25f, 25f);
 
     bool isAlive = true;
     bool canAttack = false;
@@ -39,9 +39,12 @@ public class PlayerController : MonoBehaviour
     {
         float getX = CrossPlatformInputManager.GetAxis("Horizontal");
         float getY = CrossPlatformInputManager.GetAxis("Vertical");
+
+        // calculates player velocity
         Vector3 playerVel = new Vector3(getX * speed, rigidbdy.velocity.y, getY * speed);
         rigidbdy.velocity = playerVel;
 
+        // returns true if the player has a movement speed greater than zero, then actives the runnin animation
         bool hasSpeed = Mathf.Abs(rigidbdy.velocity.x) > Mathf.Epsilon;
         animator.SetBool("Running", hasSpeed);
 
@@ -53,7 +56,7 @@ public class PlayerController : MonoBehaviour
         {
             
           //  animator.SetBool("Jumping", true);
-
+                
             Vector3 jumpVel = new Vector3(0f, jumpSpeed, 0f);
             rigidbdy.velocity += jumpVel;
         }
@@ -66,12 +69,8 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if(!isAlive)
-        {
-            return;
-        }
-
-        
+        // if player is dead, we disable all controls of the player
+        if(!isAlive) {  return; }
 
         Run();
         FlipSprite();
@@ -80,24 +79,23 @@ public class PlayerController : MonoBehaviour
         Attack();
     }
 
+
     public void takeDamage(float dmg)
     {
+        // Calculates the players health (and avoids negative numbers)
         maxHealth = Mathf.Max(maxHealth - dmg, 0);
+
+        // Damage the player
         FindObjectOfType<GameManager>().DecrementHP(dmg);
-        if (maxHealth <= 0)
-        {
-            Die();
-        }
-        print(maxHealth);
+
+        // player dies when health reaches zero
+        if (maxHealth <= 0) { Die(); }
     }
 
     private void Attack()
     {
-
-      
         if (canAttack && Input.GetKeyDown(KeyCode.F) && target.tag == "Enemy")
         {
-            print("Attacking: " + target);
             animator.SetTrigger("Attack");
             Health health = target.GetComponent<Health>();
             health.TakeDamage(swordDamage);
@@ -129,7 +127,7 @@ public class PlayerController : MonoBehaviour
     {
         isAlive = false;
         animator.SetTrigger("Dying");
-        GetComponent<Rigidbody>().velocity = dieJump;
+      //  GetComponent<Rigidbody>().velocity = dieJump;
         FindObjectOfType<GameManager>().playerDeath();
     }
 

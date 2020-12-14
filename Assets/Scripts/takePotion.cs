@@ -7,6 +7,8 @@ public class takePotion : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        FindObjectOfType<PlayerController>().maxHealth = 100;
+        FindObjectOfType<GameManager>().restoreHP();
         Destroy(gameObject);
     }
     // Start is called before the first frame update

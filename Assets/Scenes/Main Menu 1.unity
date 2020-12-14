@@ -3258,8 +3258,8 @@ PolygonCollider2D:
     m_Paths:
     - - {x: 24.592182, y: -0.34893835}
       - {x: 24.524305, y: 4.0560007}
-      - {x: -15.505318, y: 4.678213}
-      - {x: -17.583181, y: -12.429562}
+      - {x: -7.341629, y: 4.8151073}
+      - {x: -7.757818, y: -12.444661}
       - {x: -2.8162594, y: -12.8443985}
       - {x: 9.218686, y: -12.841561}
       - {x: 25.155766, y: -12.837805}
@@ -16778,21 +16778,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1751246711}
     m_Modifications:
-    - target: {fileID: 652301326281453715, guid: 15361a8be63ce4543950acb9fa031482,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -4.9513087
-      objectReference: {fileID: 0}
-    - target: {fileID: 652301326281453715, guid: 15361a8be63ce4543950acb9fa031482,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 2.5901031
-      objectReference: {fileID: 0}
-    - target: {fileID: 652301326281453715, guid: 15361a8be63ce4543950acb9fa031482,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -9.422574
-      objectReference: {fileID: 0}
     - target: {fileID: 652301326499003377, guid: 15361a8be63ce4543950acb9fa031482,
         type: 3}
       propertyPath: m_Name
@@ -16803,21 +16788,6 @@ PrefabInstance:
       propertyPath: m_Follow
       value: 
       objectReference: {fileID: 303912158}
-    - target: {fileID: 652301326843115714, guid: 15361a8be63ce4543950acb9fa031482,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -4.9513087
-      objectReference: {fileID: 0}
-    - target: {fileID: 652301326843115714, guid: 15361a8be63ce4543950acb9fa031482,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 2.5901031
-      objectReference: {fileID: 0}
-    - target: {fileID: 652301326843115714, guid: 15361a8be63ce4543950acb9fa031482,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -9.422574
-      objectReference: {fileID: 0}
     - target: {fileID: 652301326843115715, guid: 15361a8be63ce4543950acb9fa031482,
         type: 3}
       propertyPath: m_BoundingShape2D

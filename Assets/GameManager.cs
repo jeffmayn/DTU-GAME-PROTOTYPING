@@ -6,7 +6,8 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] int lives = 2;
+    [SerializeField] int lives = 3;
+    [SerializeField] Text livesText;
     [SerializeField] Image image;
 
 
@@ -33,12 +34,12 @@ public class GameManager : MonoBehaviour
         float maxHP = 100f;
         float newWidth = (hp / maxHP) * width;
 
-
-
-
         image.rectTransform.sizeDelta = new Vector2(newWidth, 100);
+    }
 
-        print("HP: " + hp);
+    public void restoreHP()
+    {
+        image.rectTransform.sizeDelta = new Vector2(156, 100);
     }
 
     public void playerDeath()
@@ -64,6 +65,7 @@ public class GameManager : MonoBehaviour
     public void DecrementLife()
     {
         lives--;
+        livesText.text = lives.ToString();
         var currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadScene(currentSceneIndex);
     }
@@ -71,7 +73,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        livesText.text = lives.ToString();
     }
 
     // Update is called once per frame

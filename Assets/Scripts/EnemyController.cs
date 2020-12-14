@@ -103,10 +103,8 @@ public class EnemyController : MonoBehaviour
     {
         if (canAttack && player.tag == "Player")
         {
-            print("Attacking: " + target);
             animator.SetTrigger("Attack");
 
-            //animator.SetTrigger("Attack");
             PlayerController health = target.GetComponent<PlayerController>();
             health.takeDamage(swordDamage);
         }
