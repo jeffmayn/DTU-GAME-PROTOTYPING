@@ -10,8 +10,6 @@ public class EnemeTaunt : MonoBehaviour
 
     public void findTaunt(bool isAlive, NavMeshAgent nmAgent)
     {
-
-      //  GameObject tauntPos = GameObject.FindWithTag("EnemyTaunt");
         bool nearByTaunt = Vector3.Distance(transform.position, taunt.transform.position) < 1.0f;
 
         if (nearByTaunt && isAlive)
@@ -22,18 +20,5 @@ public class EnemeTaunt : MonoBehaviour
         {
             nmAgent.destination = taunt.transform.position;
         }
-    }
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

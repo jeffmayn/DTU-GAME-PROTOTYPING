@@ -5,15 +5,16 @@ using UnityStandardAssets.CrossPlatformInput;
 
 public class PlayerController : MonoBehaviour
 {
-  //  [SerializeField] Transform target;
+  
     [SerializeField] float swordDamage = 25f;
     [SerializeField] Transform target;
+    [SerializeField] Vector2 dieJump = new Vector2(25f, 25f);
 
     public float maxHealth = 5.0f;
     public float minHealth = 0.0f;
     public int speed = 2;
     public int jumpSpeed = 5;
-    //[SerializeField] Vector2 dieJump = new Vector2(25f, 25f);
+    
 
     bool isAlive = true;
     bool canAttack = false;
@@ -24,9 +25,7 @@ public class PlayerController : MonoBehaviour
     CapsuleCollider collidr;
     Ray lastRay;
 
-  
-
-
+ 
     void Start()
     {
         rigidbdy = GetComponent<Rigidbody>();
@@ -124,10 +123,16 @@ public class PlayerController : MonoBehaviour
     }
 
     public void Die()
-    {
-        isAlive = false;
+    {  
         animator.SetTrigger("Dying");
-      //  GetComponent<Rigidbody>().velocity = dieJump;
+        GetComponent<Rigidbody>().velocity = dieJump;
+        isAlive = false;
+        StartCoroutine(killPlayer());  
+    }
+
+    IEnumerator killPlayer()
+    {
+        yield return new WaitForSeconds(3); // so the animation can be done before respawning player
         FindObjectOfType<GameManager>().playerDeath();
     }
 

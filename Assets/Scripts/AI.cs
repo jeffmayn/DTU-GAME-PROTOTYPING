@@ -21,10 +21,8 @@ public class AI : MonoBehaviour
 
     private void Update()
     {
-        lastAttack += Time.deltaTime;
+        lastAttack += Time.deltaTime; // make the enemy pause between attack-strokes
         bool playerisAlive = player.GetComponent<PlayerController>().isPlayerAlive();
-
-
         bool inFieldOfView = Vector3.Distance(transform.position, player.transform.position) < fieldOfView;
         bool inStoppingRange = Vector3.Distance(transform.position, player.transform.position) < stoppingRange;
         bool attackingRange = inFieldOfView && Vector3.Distance(transform.position, player.transform.position) <= 2;
@@ -41,8 +39,7 @@ public class AI : MonoBehaviour
             GetComponent<EnemyController>().Stop(inFieldOfView, playerisAlive);
         }
 
-        // Attack player if hes alive
-
+        // Attack player is only possible if hes alive
         if(transform.gameObject.tag != "Dead")
         {
             canAttack = true;
@@ -51,6 +48,7 @@ public class AI : MonoBehaviour
             canAttack = false;
         }
         
+        // if enemy is withing line of sight, attacking range and last-attack-pause is over, he will attack player
         if (playerisAlive && lastAttack > attackRestingTime && inStoppingRange && inFieldOfView)
         {
             GetComponent<EnemyController>().Attack(player, canAttack);
@@ -59,6 +57,7 @@ public class AI : MonoBehaviour
 
     }
 
+    // return true if player is in enemys field of view
     private bool Distance()
     {
         float distanceToPlayer = Vector3.Distance(player.transform.position, transform.position);

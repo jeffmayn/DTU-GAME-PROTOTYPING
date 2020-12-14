@@ -10,11 +10,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] Text livesText;
     [SerializeField] Image image;
 
-
-    // singleton: if already one session exists, any time a new session is instantiated it destroyds itself
-
-    private void Awake()
+    private void Awake() 
     {
+        // SINGLETON: see # of sessions that exists
         int gameSessions = FindObjectsOfType<GameManager>().Length;
         if(gameSessions > 1)
         {
