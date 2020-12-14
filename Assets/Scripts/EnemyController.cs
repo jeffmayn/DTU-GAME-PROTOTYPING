@@ -95,7 +95,10 @@ public class EnemyController : MonoBehaviour
     public void Die()
     {
         isAlive = false;
-        transform.gameObject.tag = "Dead";
+        if (transform.gameObject.tag != "Boss") {
+            transform.gameObject.tag = "Dead";
+        }
+        
         animator.SetTrigger("Die");
     }
 

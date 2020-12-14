@@ -113,7 +113,7 @@ public class PlayerController : MonoBehaviour
 
     private void Attack()
     {
-        if (canAttack && Input.GetKeyDown(KeyCode.F) && (target.tag == "Enemy" || target.tag == "Ball"))
+        if (canAttack && Input.GetKeyDown(KeyCode.F) && (target.tag == "Enemy" || target.tag == "Ball" || target.tag == "Boss"))
         {
             // pushing the ball
             if (target.tag == "Ball")

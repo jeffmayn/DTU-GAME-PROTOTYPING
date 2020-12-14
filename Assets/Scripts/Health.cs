@@ -14,6 +14,5 @@ public class Health : MonoBehaviour
             GetComponent<EnemyController>().Die();
             //Destroy(gameObject);
         }
-        print(health);
     }
 }
