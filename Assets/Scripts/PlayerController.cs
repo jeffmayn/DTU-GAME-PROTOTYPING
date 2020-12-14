@@ -18,12 +18,14 @@ public class PlayerController : MonoBehaviour
 
     bool isAlive = true;
     bool canAttack = false;
+    bool grounded = true;
 
 
     Rigidbody rigidbdy;
     Rigidbody ball_rb;
     Animator animator;
     CapsuleCollider collidr;
+    BoxCollider feet;
     Ray lastRay;
 
  
@@ -50,15 +52,32 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    private void OnTriggerStay(Collider other)
+    {
+        grounded = true;
+        print(grounded);
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        grounded = false;
+        print(grounded);
+    }
+
     private void Jump()
     {
         if (CrossPlatformInputManager.GetButtonDown("Jump"))
         {
-            
-          //  animator.SetBool("Jumping", true);
+
+            //  animator.SetBool("Jumping", true);
+
+            if (grounded)
+            {
+                Vector3 jumpVel = new Vector3(0f, jumpSpeed, 0f);
+                rigidbdy.velocity += jumpVel;
+            }
                 
-            Vector3 jumpVel = new Vector3(0f, jumpSpeed, 0f);
-            rigidbdy.velocity += jumpVel;
+            
         }
     }
 
