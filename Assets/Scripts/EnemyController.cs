@@ -6,7 +6,7 @@ using UnityEngine.AI;
 public class EnemyController : MonoBehaviour
 {
     [SerializeField] Transform target;
-    [SerializeField] float speed = 1f;
+   // [SerializeField] float speed = 1f;
     [SerializeField] float swordDamage = 5f;
 
     Rigidbody rigidbdy;

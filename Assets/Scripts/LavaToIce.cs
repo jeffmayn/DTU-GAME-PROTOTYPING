@@ -5,9 +5,10 @@ using UnityEngine;
 public class LavaToIce : MonoBehaviour
 {
     [SerializeField] GameObject obj;
-    [SerializeField] Texture[] textures;
+    [SerializeField] Texture[] textures = { };
     GameObject lavaField;
     private Renderer cubeRenderer;
+
 
 
     private void OnTriggerEnter(Collider other)

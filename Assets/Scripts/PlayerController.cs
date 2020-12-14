@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
 
 
     Rigidbody rigidbdy;
+    Rigidbody ball_rb;
     Animator animator;
     CapsuleCollider collidr;
     Ray lastRay;
@@ -93,8 +94,16 @@ public class PlayerController : MonoBehaviour
 
     private void Attack()
     {
-        if (canAttack && Input.GetKeyDown(KeyCode.F) && target.tag == "Enemy")
+        if (canAttack && Input.GetKeyDown(KeyCode.F) && (target.tag == "Enemy" || target.tag == "Ball"))
         {
+            // pushing the ball
+            if (target.tag == "Ball")
+            {
+                ball_rb = target.GetComponent<Rigidbody>();
+                ball_rb.AddForce(5f, 5f, 5f, ForceMode.Impulse);
+            }
+
+            // attacking enemies
             animator.SetTrigger("Attack");
             Health health = target.GetComponent<Health>();
             health.TakeDamage(swordDamage);
