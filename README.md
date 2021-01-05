@@ -13,4 +13,7 @@ SPACE: Jump<br>
 F: Attack<br>
 <center><br>
 <hr>
-<img src="https://github.com/jeffmayn/OpenGL-3D-Space-Game/blob/master/src/assets/textures/game.png"></a></center>
+<img src="https://github.com/jeffmayn/DTU-GAME-PROTOTYPING/blob/master/1.png?raw=true">
+<br>
+<img src="https://github.com/jeffmayn/DTU-GAME-PROTOTYPING/blob/master/2.png?raw=true">
+</center>
